@@ -15,4 +15,11 @@ describe User do
       expect(davide.valid?).to eq false
     end
   end
+
+  context 'User details are correct' do
+    let!(:dave) {User.create(username: 'dave', password: 'Secret123')}
+    it "Sign in if user and password are correct" do
+      expect(User.authenticate('dave', 'Secret123')).to eq(dave)
+    end
+  end
 end

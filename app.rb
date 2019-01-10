@@ -11,8 +11,14 @@ enable :sessions
     erb :index
   end
 
-  post 'signin' do
-
+  post '/signin' do
+    user = User.authenticate(params[:sign_in_username], params[:sign_in_password])
+    if user
+      session[:user_id] = user.id
+      redirect '/privateprofile/1'
+    else
+      redirect '/'
+    end
   end
 
   post '/signup' do
