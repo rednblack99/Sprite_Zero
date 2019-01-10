@@ -1,22 +1,29 @@
 <h1>Welcome Back</h1>
+
 <div>
-  <p>name: Joe Bloggs</p>
+  <p> <a href=<%="/privateprofile/edit/#{@user.id}/name"%>> name:</a> <%=@user.name%></p>
 </div>
+
 <div>
-  <p>description:</p>
+  <p><a href=<%="/privateprofile/edit/#{@user.id}/description"%>> description:</a> <%=@user.description%></p>
 </div>
+
 <div>
-  <p>interests:</p>
+  <p><a href=<%="/privateprofile/edit/#{@user.id}/interests"%>> interests:</a> <%=@user.interests%></p>
 </div>
+
 <div>
-  <p>age:</p>
+  <p><a href=<%="/privateprofile/edit/#{@user.id}/age"%>> age:</a> <%=@user.age%></p>
 </div>
+
 <div>
-  <p>photo:</p>
+  <p><a href=<%="/privateprofile/edit/#{@user.id}/photo"%>> photo:</a> <%=@user.photo%></p>
 </div>
+
 <div>
-  <p>availability:</p>
+  <p><a href=<%="/privateprofile/edit/#{@user.id}/availability"%>> availability:</a> <%=@user.availability%></p>
 </div>
+
 <div>
-  <p>location:</p>
+  <p><a href=<%="/privateprofile/edit/#{@user.id}/location"%>> location:</a> <%=@user.location%></p>
 </div>
