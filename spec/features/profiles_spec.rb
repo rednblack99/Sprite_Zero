@@ -11,8 +11,7 @@ feature 'profile' do
   end
 
   context 'displaying info' do
-    let!(:user) {User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')}
-    
+    let!(:user) {User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')}    
     scenario 'A user can see their details on their profile page'  do
       visit '/privateprofile/1'
       expect(page).to have_content 'Joe Bloggs'
