@@ -21,8 +21,7 @@ I can submit my details and signup from the homepage
 
 As an admin
 So I can ensure user passwords are of 8 characters or more
-A user must submit a password of 8 characters or more when submitting a signup
-request
+A user cannot submit a password with less than 8 characters
 
 As a user
 So I know that my account is unique
@@ -39,6 +38,46 @@ User passwords are stored as an encrypted key
 As a user
 So that I am safe
 I cannot create an account if I am under 16 years old
+
+As an admin
+So I have the information I need to create a new user
+A User cannot ommit any details when signing up to Singletons.
+
+As a user
+So my profile displays my name
+I can submit my name details
+
+As a user
+So my profile displays my age
+I can submit my age details
+
+As a user
+So my profile displays my interests
+I can submit my interests
+
+As a user
+So my profile has a link to a photo
+I can submit a URL link
+
+As a user
+So my profile has a description
+I can submit a description
+
+As a user
+So my profile displays my availability
+I can submit my availability
+
+As a user
+So I can keep my profile details current
+I can update any of them
+
+As a user
+So I can leave Singletons if I want to
+I can delete my profile page and account
+
+As an admin
+So non-Singletons cannot view User's profiles
+They must have an account
 
 ```
 
