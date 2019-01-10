@@ -33,6 +33,10 @@ feature 'profile' do
     click_on 'name:'
     expect(page.current_path).to eq '/privateprofile/edit/1/name'
     expect(page).to have_content "What should we change it to?"
+    fill_in :updated_detail, with: 'James Blag'
+    click_button "Update"
+    expect(page.current_path).to eq '/privateprofile/1'
+    expect(page).to have_content "James Blag"
   end  
 end
 

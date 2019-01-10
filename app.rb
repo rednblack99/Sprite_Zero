@@ -5,11 +5,14 @@ require './config/datamapper'
 
 class Singleton_dating < Sinatra::Base
 
+  set :method_override, true
+
   get '/' do
     'Hello Singletons'
   end
 
   get '/privateprofile/1'  do
+    User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')
     @user = User.get!(1)
     erb :profile
   end
@@ -18,6 +21,12 @@ class Singleton_dating < Sinatra::Base
     @user = User.get(1)
     @detail = 'name'
     erb :edit_detail
+  end
+
+  put "/privateprofile/edit/:id/name" do
+    user = User.get(1)
+    user.update(:name => params[:updated_detail])
+    redirect '/privateprofile/1'
   end
 
   run! if app_file == 0
