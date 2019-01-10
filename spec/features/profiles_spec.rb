@@ -25,7 +25,7 @@ feature 'profile' do
     end  
  end
 
- context 'displaying info' do
+ context 'Editing their info' do
   let!(:user) {User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')}
   
   scenario 'A user can edit their name'  do
@@ -37,7 +37,74 @@ feature 'profile' do
     click_button "Update"
     expect(page.current_path).to eq '/privateprofile/1'
     expect(page).to have_content "James Blag"
+  end
+  
+  scenario 'A user can edit their description'  do
+    visit '/privateprofile/1'
+    click_on 'description:'
+    expect(page.current_path).to eq '/privateprofile/edit/1/description'
+    expect(page).to have_content "What should we change it to?"
+    fill_in :updated_detail, with: 'robot'
+    click_button "Update"
+    expect(page.current_path).to eq '/privateprofile/1'
+    expect(page).to have_content "robot"
   end  
+
+  # scenario 'A user can edit their interests'  do
+  #   visit '/privateprofile/1'
+  #   click_on 'interests:'
+  #   expect(page.current_path).to eq '/privateprofile/edit/1/interests'
+  #   expect(page).to have_content "What should we change it to?"
+  #   fill_in :updated_detail, with: 'Javascript'
+  #   click_button "Update"
+  #   expect(page.current_path).to eq '/privateprofile/1'
+  #   expect(page).to have_content "Javascript"
+  # end  
+
+  # scenario 'A user can edit their age'  do
+  #   visit '/privateprofile/1'
+  #   click_on 'age:'
+  #   expect(page.current_path).to eq '/privateprofile/edit/1/age'
+  #   expect(page).to have_content "What should we change it to?"
+  #   fill_in :updated_detail, with: '99'
+  #   click_button "Update"
+  #   expect(page.current_path).to eq '/privateprofile/1'
+  #   expect(page).to have_content "99"
+  # end  
+
+  # scenario 'A user can edit their photo'  do
+  #   visit '/privateprofile/1'
+  #   click_on 'photo:'
+  #   expect(page.current_path).to eq '/privateprofile/edit/1/photo'
+  #   expect(page).to have_content "What should we change it to?"
+  #   fill_in :updated_detail, with: 'new photo'
+  #   click_button "Update"
+  #   expect(page.current_path).to eq '/privateprofile/1'
+  #   expect(page).to have_content "new photo"
+  # end  
+
+  # scenario 'A user can edit their availability'  do
+  #   visit '/privateprofile/1'
+  #   click_on 'availability:'
+  #   expect(page.current_path).to eq '/privateprofile/edit/1/availability'
+  #   expect(page).to have_content "What should we change it to?"
+  #   fill_in :updated_detail, with: 'always'
+  #   click_button "Update"
+  #   expect(page.current_path).to eq '/privateprofile/1'
+  #   expect(page).to have_content "always"
+  # end  
+
+  # scenario 'A user can edit their location'  do
+  #   visit '/privateprofile/1'
+  #   click_on 'location:'
+  #   expect(page.current_path).to eq '/privateprofile/edit/1/location'
+  #   expect(page).to have_content "What should we change it to?"
+  #   fill_in :updated_detail, with: 'moon'
+  #   click_button "Update"
+  #   expect(page.current_path).to eq '/privateprofile/1'
+  #   expect(page).to have_content "moon"
+  # end  
+
 end
 
 end

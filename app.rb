@@ -17,6 +17,14 @@ class Singleton_dating < Sinatra::Base
     erb :profile
   end
 
+
+
+
+
+
+
+
+
   get "/privateprofile/edit/:id/name" do
     @user = User.get(params[:id])
     @detail = 'name'
@@ -28,6 +36,19 @@ class Singleton_dating < Sinatra::Base
     user.update(:name => params[:updated_detail])
     redirect '/privateprofile/1'
   end
+
+  get "/privateprofile/edit/:id/description" do
+    @user = User.get(params[:id])
+    @detail = 'description'
+    erb :edit_detail
+  end
+
+  put "/privateprofile/edit/:id/description" do
+    user = User.get(params[:id])
+    user.update(:description => params[:updated_detail])
+    redirect '/privateprofile/1'
+  end
+
 
   run! if app_file == 0
 
