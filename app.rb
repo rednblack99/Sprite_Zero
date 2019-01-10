@@ -1,16 +1,22 @@
 ENV["RACK_ENV"] ||= 'development'
 
 require 'sinatra/base'
-# require './config/datamapper'
+require './config/datamapper'
 
-class Singleton < Sinatra::Base
+class Singleton_dating < Sinatra::Base
 
   get '/' do
     erb :index
   end
 
-  post '/signup' do
-    'Sign up info here'
+  post 'signup' do
+
   end
+
+  get '/privateprofile/1'  do
+    erb :profile
+  end
+
+  run! if app_file == 0
 
 end
