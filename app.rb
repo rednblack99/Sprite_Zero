@@ -18,13 +18,13 @@ class Singleton_dating < Sinatra::Base
   end
 
   get "/privateprofile/edit/:id/name" do
-    @user = User.get(1)
+    @user = User.get(params[:id])
     @detail = 'name'
     erb :edit_detail
   end
 
   put "/privateprofile/edit/:id/name" do
-    user = User.get(1)
+    user = User.get(params[:id])
     user.update(:name => params[:updated_detail])
     redirect '/privateprofile/1'
   end
