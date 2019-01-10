@@ -29,7 +29,7 @@ I cannot create two accounts with the same email
 
 As a user
 So I can make sure nobody accesses my account when I'm away from my computer
-I can logout from my profile
+I can logout from Singletons
 
 As an admin
 To keep user passwords secure
@@ -76,8 +76,8 @@ So I can leave Singletons if I want to
 I can delete my profile page and account
 
 As an admin
-So non-Singletons cannot view User's profiles
-They must have an account
+To ensure the privacy of Singleton users
+Only users of Singleton can view other Singletons
 
 ```
 
@@ -92,11 +92,3 @@ xxxxx
 #### Approach-
 --------------
 - 
-
-
-
-
-Collapse 
-Message Input
-
-Message Adam Lodowski

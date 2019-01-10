@@ -1,17 +1,8 @@
-ENV["RACK_ENV"] ||= 'development'
-require './config/datamapper'
+require "sinatra/activerecord/rake"
 
-namespace :db do 
-  desc 'run test env migrations'
-  task :auto_migrate do
-    abort('Wrong env!') if ENV["RACK_ENV"] == 'development'
-    puts 'Migration successful' if DataMapper.auto_migrate!
+namespace :db do
+  task :load_config do
+    require "./app"
+    puts 'Config loaded from app successfully'
   end
-
-  desc 'run development env update'
-  task :auto_upgrade do
-    abort('Wrong env!') if ENV["RACK_ENV"] == 'test'
-    puts 'Upgrade successful!' if DataMapper.auto_upgrade!
-  end
-
 end
