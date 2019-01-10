@@ -37,6 +37,7 @@ class Singleton_dating < Sinatra::Base
     redirect '/privateprofile/1'
   end
 
+
   get "/privateprofile/edit/:id/description" do
     @user = User.get(params[:id])
     @detail = 'description'
@@ -49,9 +50,10 @@ class Singleton_dating < Sinatra::Base
     redirect '/privateprofile/1'
   end
 
+
   get "/privateprofile/edit/:id/interests" do
     @user = User.get(params[:id])
-    @detail = 'description'
+    @detail = 'interests'
     erb :edit_detail
   end
 
@@ -61,11 +63,13 @@ class Singleton_dating < Sinatra::Base
     redirect '/privateprofile/1'
   end
 
+
   get "/privateprofile/edit/:id/age" do
     @user = User.get(params[:id])
-    @detail = 'description'
+    @detail = 'age'
     erb :edit_detail
   end
+
 
   put "/privateprofile/edit/:id/age" do
     user = User.get(params[:id])
@@ -73,7 +77,42 @@ class Singleton_dating < Sinatra::Base
     redirect '/privateprofile/1'
   end
 
+  get "/privateprofile/edit/:id/photo" do
+    @user = User.get(params[:id])
+    @detail = 'photo'
+    erb :edit_detail
+  end
 
+  put "/privateprofile/edit/:id/photo" do
+    user = User.get(params[:id])
+    user.update(:photo => params[:updated_detail])
+    redirect '/privateprofile/1'
+  end
+
+  get "/privateprofile/edit/:id/availability" do
+    @user = User.get(params[:id])
+    @detail = 'availability'
+    erb :edit_detail
+  end
+
+  put "/privateprofile/edit/:id/availability" do
+    user = User.get(params[:id])
+    user.update(:availability => params[:updated_detail])
+    redirect '/privateprofile/1'
+  end
+
+  get "/privateprofile/edit/:id/location" do
+    @user = User.get(params[:id])
+    @detail = 'location'
+    erb :edit_detail
+  end
+
+  put "/privateprofile/edit/:id/location" do
+    user = User.get(params[:id])
+    user.update(:location => params[:updated_detail])
+    redirect '/privateprofile/1'
+  end
+  
   run! if app_file == 0
 
 end
