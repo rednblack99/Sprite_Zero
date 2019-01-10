@@ -10,7 +10,14 @@ class Singleton_dating < Sinatra::Base
   end
 
   get '/privateprofile/1'  do
+    @user = User.get!(1)
     erb :profile
+  end
+
+  get "/privateprofile/edit/:id/name" do
+    @user = User.get(1)
+    @detail = 'name'
+    erb :edit_detail
   end
 
   run! if app_file == 0

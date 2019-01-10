@@ -24,4 +24,16 @@ feature 'profile' do
       expect(page).to have_content "London"
     end  
  end
+
+ context 'displaying info' do
+  let!(:user) {User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')}
+  
+  scenario 'A user can edit their name'  do
+    visit '/privateprofile/1'
+    click_on 'name:'
+    expect(page.current_path).to eq '/privateprofile/edit/1/name'
+    expect(page).to have_content "What should we change it to?"
+  end  
+end
+
 end
