@@ -1,13 +1,16 @@
 ENV["RACK_ENV"] ||= 'development'
 
 require 'sinatra/base'
-require './config/datamapper'
+# require './config/datamapper'
 
 class Singleton < Sinatra::Base
 
   get '/' do
-    'Hello Singletons'
+    erb :index
   end
 
+  post '/signup' do
+    'Sign up info here'
+  end
 
 end
