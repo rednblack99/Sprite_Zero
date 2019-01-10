@@ -1,7 +1,7 @@
 RSpec.feature 'infrastructure' do
   scenario 'Can visit homepage' do
     visit '/'
-    expect(page).to have_content "Hello Singletons"
+    expect(page).to have_content "Welcome to Singleton Dating"
   end
 
   scenario 'Can visit my profile'  do
