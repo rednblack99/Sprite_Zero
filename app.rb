@@ -33,7 +33,7 @@ enable :sessions
 
   get '/privateprofile/1'  do
     User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')
-    @user = User.get!(1)
+    @user = User.get(1)
     erb :profile
   end
 
