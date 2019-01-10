@@ -35,15 +35,15 @@
       <form action="/signup" method="post">
         <div class="form_input">
           <label for="username">Username:</label>
-          <input type="text" name="sign_up_username" placeholder="username">
+          <input type="text" name="sign_up_username" placeholder="username" required>
         </div>
         <div class="form_input">
           <label for="age">Age:</label>
-          <input type="number" name="sign_up_age" min=16 max=100>
+          <input type="number" name="sign_up_age" min=16 max=100 required>
         </div>
         <div class="form_input">
           <label for="password">Password:</label>
-          <input type="password" name="sign_up_password" placeholder="password">
+          <input type="password" name="sign_up_password" placeholder="password" required>
         </div>
       <div class="form_input">
         <input type="submit" name="Sign Up" value="Sign Up">

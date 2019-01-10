@@ -5,12 +5,24 @@ require './config/datamapper'
 
 class Singleton_dating < Sinatra::Base
 
+enable :sessions
+
   get '/' do
     erb :index
   end
 
-  post 'signup' do
+  post 'signin' do
 
+  end
+
+  post '/signup' do
+    user = User.create(username: params[:sign_up_username],age: params[:sign_up_age], password: params[:sign_up_password])
+    if user
+      session[:user_id] = user.id
+      redirect '/privateprofile/1'
+    else
+      redirect '/'
+    end
   end
 
   get '/privateprofile/1'  do
