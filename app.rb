@@ -10,7 +10,7 @@ class Singleton < Sinatra::Base
   end
 
   get '/profile'  do
-    'Welcome back'
+    erb :profile
   end
 
 end
