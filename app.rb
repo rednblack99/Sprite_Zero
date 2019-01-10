@@ -1,7 +1,7 @@
 ENV["RACK_ENV"] ||= 'development'
 
 require 'sinatra/base'
-#require './config/datamapper'
+require './config/datamapper'
 
 class Singleton < Sinatra::Base
 
@@ -9,7 +9,7 @@ class Singleton < Sinatra::Base
     'Hello Singletons'
   end
 
-  get '/profile'  do
+  get '/privateprofile/1'  do
     erb :profile
   end
 

@@ -5,7 +5,7 @@ RSpec.feature 'infrastructure' do
   end
 
   scenario 'Can visit my profile'  do
-    visit '/profile'
+    visit '/privateprofile/1'
     expect(page).to have_content "Welcome Back"
   end
 end
