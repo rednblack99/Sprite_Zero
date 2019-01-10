@@ -1,3 +1,3 @@
-require './app'
+require_relative './app'
 
-run Singleton
+run Singleton_dating

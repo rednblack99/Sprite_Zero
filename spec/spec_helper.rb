@@ -16,7 +16,7 @@
 ENV["RACK_ENV"] ||= 'test'
 require 'capybara/rspec'
 require './app'
-Capybara.app = Singleton
+Capybara.app = Singleton_dating
 
 
 RSpec.configure do |config|
