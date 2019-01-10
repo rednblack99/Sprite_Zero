@@ -18,8 +18,7 @@ feature 'User Authentication' do
   #     fill_in :sign_up_age, with: 16
   #     fill_in :sign_up_password, with: 'Secret123'
   #     click_button 'Sign Up'
-  #     expect(page).to have_content('Username:')
-  #
+  #     expect(page).to have_content('name:')
   # end
 end
 
