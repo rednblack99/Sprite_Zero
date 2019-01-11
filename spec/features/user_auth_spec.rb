@@ -54,6 +54,13 @@ end
       expect(page).to have_content('Username:')
       expect(page).to have_content('Password:')
     end
+
+    scenario 'Cannot directly visit /privateprofile without signing in' do
+      visit '/privateprofile/1'
+      expect(page.current_path).to eq '/'
+      expect(page).to have_content('Username:')
+      expect(page).to have_content('Password:')
+    end
   end
 
   context 'Signin' do

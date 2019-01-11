@@ -34,9 +34,23 @@ enable :sessions
 
   get '/privateprofile/1'  do
     User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')
-    @user = User.get(1)
-    erb :profile
+    if signed_in?
+      @user = User.get(1)
+      erb :profile
+    else
+      redirect '/'
+    end
+    
   end
+
+
+
+
+
+
+
+
+
 
   get "/privateprofile/edit/:id/name" do
     @user = User.get(params[:id])
@@ -127,5 +141,15 @@ enable :sessions
   end
 
   run! if app_file == 0
+
+  private
+
+  def signed_in?
+    !current_user.nil?
+  end
+
+  def current_user
+    @current_user ||= User.get(session[:user_id])
+  end
 
 end
