@@ -63,24 +63,23 @@ feature 'profile' do
   end
 
   scenario 'A user can edit their age'  do
-    visit '/privateprofile/1'
+    user_sign_in
     click_on 'age:'
     expect(page.current_path).to eq '/privateprofile/edit/1/age'
     expect(page).to have_content "What should we change it to?"
     fill_in :updated_detail, with: '99'
     click_button "Update"
-    expect(page.current_path).to eq '/privateprofile/1'
+    expect(page.current_path).to eq '/privateprofile/2'
     expect(page).to have_content "99"
   end
 
   scenario 'A user can edit their photo'  do
-    visit '/privateprofile/1'
+    user_sign_in
     click_on 'photo:'
-    expect(page.current_path).to eq '/privateprofile/edit/1/photo'
     expect(page).to have_content "What should we change it to?"
     fill_in :updated_detail, with: 'new photo'
     click_button "Update"
-    expect(page.current_path).to eq '/privateprofile/1'
+    expect(page.current_path).to eq '/privateprofile/2'
     expect(page).to have_content "new photo"
   end
 
