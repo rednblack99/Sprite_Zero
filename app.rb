@@ -48,8 +48,17 @@ enable :sessions
     redirect '/'
   end
 
+  get '/delete_profile/:id' do
+    @user = User.get(params[:id])
+    erb :delete_confirmation
+  end
 
-
+  delete '/delete_profile/:id' do
+    @user = User.get(params[:id])
+    session.delete(:user_id)
+    @user.destroy
+    redirect '/'
+  end
 
 
 

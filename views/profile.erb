@@ -33,3 +33,7 @@
 <div>
   <p><a href=<%="/privateprofile/edit/#{@user.id}/location"%>> location:</a> <%=@user.location%></p>
 </div>
+
+<footer>
+  <a href=<%= "/delete_profile/#{@user.id}" %>>Delete Account</a>
+</footer>

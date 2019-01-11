@@ -101,4 +101,43 @@ end
     end
   end
 
+
+  context 'Delete account' do
+    let!(:user){User.create(username: 'awesomedave', password: 'Secret123', age: 18)}
+    scenario 'gets confirmation for deleting account' do
+      visit '/'
+      fill_in :sign_in_username, with: 'awesomedave'
+      fill_in :sign_in_password, with: 'Secret123'
+      click_button 'Sign In'
+      click_link 'Delete Account'
+
+      expect(page).to have_content('Are you sure you want to delete your account?')
+    end
+
+    scenario 'can chose not to delete account' do
+      visit '/'
+      fill_in :sign_in_username, with: 'awesomedave'
+      fill_in :sign_in_password, with: 'Secret123'
+      click_button 'Sign In'
+      click_link 'Delete Account'
+      click_button 'No'
+
+      expect(page).to have_content('Welcome Back')
+    end
+
+    scenario 'can delete account' do
+      visit '/'
+      fill_in :sign_in_username, with: 'awesomedave'
+      fill_in :sign_in_password, with: 'Secret123'
+      click_button 'Sign In'
+      click_link 'Delete Account'
+      click_button 'Yes'
+
+      expect(page.current_path).to eq '/'
+      expect(page).to have_content('Username:')
+      expect(page).to have_content('Password:')
+    end
+
+  end
+
 end
