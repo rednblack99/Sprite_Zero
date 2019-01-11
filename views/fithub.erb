@@ -1,0 +1,7 @@
+
+<% @singletons.each do |singleton| %>
+<div>
+ <a href=<%="/publicprofile/#{singleton.id}"%>><%=singleton.name%></a>
+ <%=singleton.interests%>
+ </div>
+<% end %>
