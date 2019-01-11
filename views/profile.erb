@@ -20,39 +20,42 @@
 
       <nav>
         <ul>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">FitHub</a></li>
+          <li><a href=<%="/privateprofile/#{@user.id}"%>>Profile</a></li>
+          <li><a href="/singleton-fithub">FitHub</a></li>
         </ul>
       </nav>
-      <div class="">
-        <img src="<%= @user.photo %>" alt="profile_pic">
+      <div id="profile_pic">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMBmrIRyOvcTZOWoTGB_HHSgJEOQNezjwCMUDmvMkZX_M2xcZV" alt="profile_pic">
       </div>
 
-      <div>
-        <p><a href=<%="/privateprofile/edit/#{@user.id}/photo"%>> photo:</a> <%=@user.photo%></p>
-      </div>
+      <section class="info">
+        <div>
+          <p><a href=<%="/privateprofile/edit/#{@user.id}/photo"%>> photo:</a> <%=@user.photo%></p>
+        </div>
 
-      <div>
-        <p> <a href=<%="/privateprofile/edit/#{@user.id}/name"%>> name:</a> <%=@user.name%></p>
-      </div>
+        <div>
+          <p> <a href=<%="/privateprofile/edit/#{@user.id}/name"%>> name:</a> <%=@user.name%></p>
+        </div>
 
-      <div>
-        <p><a href=<%="/privateprofile/edit/#{@user.id}/description"%>> description:</a> <%=@user.description%></p>
-      </div>
+        <div>
+          <p><a href=<%="/privateprofile/edit/#{@user.id}/description"%>> description:</a> <%=@user.description%></p>
+        </div>
 
-      <div>
-        <p><a href=<%="/privateprofile/edit/#{@user.id}/interests"%>> interests:</a> <%=@user.interests%></p>
-      </div>
+        <div>
+          <p><a href=<%="/privateprofile/edit/#{@user.id}/interests"%>> interests:</a> <%=@user.interests%></p>
+        </div>
 
-      <div>
-        <p><a href=<%="/privateprofile/edit/#{@user.id}/age"%>> age:</a> <%=@user.age%></p>
-      </div>
+        <div>
+          <p><a href=<%="/privateprofile/edit/#{@user.id}/age"%>> age:</a> <%=@user.age%></p>
+        </div>
 
-      <div>
-        <p><a href=<%="/privateprofile/edit/#{@user.id}/location"%>> location:</a> <%=@user.location%></p>
-      </div>
+        <div>
+          <p><a href=<%="/privateprofile/edit/#{@user.id}/location"%>> location:</a> <%=@user.location%></p>
+        </div>
 
-      <div>
+      </section>
+
+      <div class="availability">
         <p>When I'm around:</p>
         <p><%= @availability %> </p>
         <p> <form action=<%="/add_availability/#{@user.id}"%> method="post">
@@ -62,15 +65,8 @@
       </form>
       </div>
 
-      <div>
-      <form action="/singleton-fithub" method="get">
-        <input type="submit" name="Fithub" value="Fithub">
-      </form>
-      </div>
-
-
       <footer>
-        <a href=<%= "/delete_profile/#{@user.id}" %>>Delete Account</a>
+        <a id ="footer_note" href=<%= "/delete_profile/#{@user.id}" %>>Delete Account</a>
       </footer>
     </div>
 
