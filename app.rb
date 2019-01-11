@@ -45,8 +45,12 @@ enable :sessions
   end
 
   get '/singleton-fithub'  do
-    @singletons = User.all
-    erb :Fithub
+    if signed_in?
+      @singletons = User.all
+      erb :Fithub
+    else
+      redirect '/'
+    end
   end
 
   delete '/sessions' do
@@ -55,8 +59,12 @@ enable :sessions
   end
 
   get '/delete_profile/:id' do
-    @user = User.get(params[:id])
-    erb :delete_confirmation
+    if signed in?
+      @user = User.get(params[:id])
+      erb :delete_confirmation
+    else
+      redirect '/'
+    end
   end
 
   delete '/delete_profile/:id' do
