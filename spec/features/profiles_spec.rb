@@ -54,7 +54,6 @@ feature 'profile' do
   scenario 'A user can edit their interests'  do
     user_sign_in
     click_on 'interests:'
-    expect(page.current_path).to eq '/privateprofile/edit/1/interests'
     expect(page).to have_content "What should we change it to?"
     fill_in :updated_detail, with: 'Javascript'
     click_button "Update"
@@ -65,7 +64,6 @@ feature 'profile' do
   scenario 'A user can edit their age'  do
     user_sign_in
     click_on 'age:'
-    expect(page.current_path).to eq '/privateprofile/edit/1/age'
     expect(page).to have_content "What should we change it to?"
     fill_in :updated_detail, with: '99'
     click_button "Update"
