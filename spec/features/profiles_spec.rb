@@ -52,13 +52,13 @@ feature 'profile' do
   end
 
   scenario 'A user can edit their interests'  do
-    visit '/privateprofile/1'
+    user_sign_in
     click_on 'interests:'
     expect(page.current_path).to eq '/privateprofile/edit/1/interests'
     expect(page).to have_content "What should we change it to?"
     fill_in :updated_detail, with: 'Javascript'
     click_button "Update"
-    expect(page.current_path).to eq '/privateprofile/1'
+    expect(page.current_path).to eq '/privateprofile/2'
     expect(page).to have_content "Javascript"
   end
 
