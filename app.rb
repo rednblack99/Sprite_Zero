@@ -3,14 +3,13 @@ ENV["RACK_ENV"] ||= 'development'
 require 'sinatra/base'
 require './config/datamapper'
 
-class Singleton_dating < Sinatra::Base
-set :method_override, true
-enable :sessions
+class SingletonDating < Sinatra::Base
+  set :method_override, true
+  enable :sessions
 
   get '/' do
     erb :index
   end
-
 
   post '/signin' do
     user = User.authenticate(params[:sign_in_username], params[:sign_in_password])
@@ -23,7 +22,7 @@ enable :sessions
   end
 
   post '/signup' do
-    user = User.create(username: params[:sign_up_username],age: params[:sign_up_age], password: params[:sign_up_password],name: 'Click the link to add your full name', description: 'Tell us about yourself', interests: 'What do you enjoy?', photo: 'photo here', availability: 'When are you free?', location: 'Where are you?')
+    user = User.create(username: params[:sign_up_username], age: params[:sign_up_age], password: params[:sign_up_password], name: 'Click the link to add your full name', description: 'Tell us about yourself', interests: 'What do you enjoy?', photo: 'photo here', availability: 'When are you free?', location: 'Where are you?')
     redirect '/' unless params[:sign_up_password].length >= 8
     if user.valid?
       session[:id] = user.id
@@ -33,7 +32,7 @@ enable :sessions
     end
   end
 
-   get '/privateprofile/:id'  do
+  get '/privateprofile/:id' do
     User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')
     if signed_in?
       @user = User.get(params[:id])
@@ -41,11 +40,11 @@ enable :sessions
       erb :profile
     else
       redirect '/'
-
+   
     end
   end
 
-  get '/singleton-fithub'  do
+  get '/singleton-fithub' do
     if signed_in?
       @singletons = User.all
       erb :Fithub
@@ -55,8 +54,8 @@ enable :sessions
   end
 
   get '/publicprofile/:id' do
-     @user = User.get(params[:id])
-     erb :public_profile
+    @user = User.get(params[:id])
+    erb :public_profile
   end
 
   delete '/sessions' do
@@ -86,10 +85,6 @@ enable :sessions
     redirect "/privateprofile/#{session[:id]}"
   end
 
-
-
-
-
   get "/privateprofile/edit/:id/name" do
     @user = User.get(params[:id])
     @detail = 'name'
@@ -101,7 +96,6 @@ enable :sessions
     user.update(:name => params[:updated_detail])
     redirect "/privateprofile/#{session[:id]}"
   end
-
 
   get "/privateprofile/edit/:id/description" do
     @user = User.get(params[:id])
@@ -115,7 +109,6 @@ enable :sessions
     redirect "/privateprofile/#{session[:id]}"
   end
 
-
   get "/privateprofile/edit/:id/interests" do
     @user = User.get(params[:id])
     @detail = 'interests'
@@ -128,13 +121,11 @@ enable :sessions
     redirect "/privateprofile/#{session[:id]}"
   end
 
-
   get "/privateprofile/edit/:id/age" do
     @user = User.get(params[:id])
     @detail = 'age'
     erb :edit_detail
   end
-
 
   put "/privateprofile/edit/:id/age" do
     user = User.get(params[:id])

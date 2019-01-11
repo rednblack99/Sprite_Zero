@@ -23,3 +23,4 @@ end
       expect(page).to have_content "London"
     end
   end
+end

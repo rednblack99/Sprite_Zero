@@ -1,6 +1,6 @@
 feature 'User Authentication' do
   context 'Signup' do
-  let!(:user){User.create(username: 'singleguy', password: 'secretguy', age: 18)}
+    let!(:user) { User.create(username: 'singleguy', password: 'secretguy', age: 18) }
     scenario 'User can signup' do
       visit '/'
       expect(page).to have_content('Username:')
@@ -17,7 +17,7 @@ feature 'User Authentication' do
       fill_in :sign_up_age, with: 16
       fill_in :sign_up_password, with: 'Password1'
       click_button 'Sign Up'
-
+  
       expect(page.current_path).to eq '/'
       expect(page).to have_content('Username:')
       expect(page).to have_content('Password:')
@@ -29,7 +29,7 @@ feature 'User Authentication' do
       fill_in :sign_up_age, with: 18
       fill_in :sign_up_password, with: 'Pass123'
       click_button 'Sign Up'
-
+  
       expect(page.current_path).to eq '/'
     end
 
@@ -42,7 +42,7 @@ feature 'User Authentication' do
       expect(page.current_path).to eq '/'
     end
 
-end
+  end
 
   context 'Signin without an account' do
     scenario 'User cannot signin without account' do
@@ -64,7 +64,7 @@ end
   end
 
   context 'Signin' do
-    let!(:user){User.create(username: 'awesomedave', password: 'Secret123', age: 18)}
+    let!(:user) { User.create(username: 'awesomedave', password: 'Secret123', age: 18) }
     scenario 'User can signin' do
       visit '/'
       fill_in :sign_in_username, with: 'awesomedave'
@@ -101,9 +101,8 @@ end
     end
   end
 
-
   context 'Delete account' do
-    let!(:user){User.create(username: 'awesomedave', password: 'Secret123', age: 18)}
+    let!(:user) { User.create(username: 'awesomedave', password: 'Secret123', age: 18) }
     scenario 'gets confirmation for deleting account' do
       visit '/'
       fill_in :sign_in_username, with: 'awesomedave'

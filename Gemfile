@@ -2,20 +2,20 @@
 
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-gem 'sinatra'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'rake'
+gem 'sinatra'
 
 gem 'pry'
 
 group :test do
- gem 'database_cleaner'
- gem 'rspec'
- gem 'capybara'
- gem 'rubocop'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'rspec'
+  gem 'rubocop'
 end
 
 # gem "rails"
