@@ -11,8 +11,16 @@ feature 'User Authentication' do
       fill_in :sign_up_password, with: 'Secret123'
       click_button 'Sign Up'
     end
-    scenario 'cannot sign up with same username' do
+    scenario 'cannot sign up twice with same username' do
+      visit '/'
+      fill_in :sign_up_username, with: 'singleguy'
+      fill_in :sign_up_age, with: 16
+      fill_in :sign_up_password, with: 'Password1'
+      click_button 'Sign Up'
 
+      expect(page.current_path).to eq '/'
+      expect(page).to have_content('Username:')
+      expect(page).to have_content('Password:')
     end
 end
 

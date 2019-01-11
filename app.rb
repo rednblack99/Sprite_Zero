@@ -23,7 +23,7 @@ enable :sessions
 
   post '/signup' do
     user = User.create(username: params[:sign_up_username],age: params[:sign_up_age], password: params[:sign_up_password])
-    if user
+    if user.valid?
       session[:user_id] = user.id
       redirect '/privateprofile/1'
     else
