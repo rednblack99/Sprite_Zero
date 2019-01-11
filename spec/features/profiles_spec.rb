@@ -1,8 +1,8 @@
 require_relative 'web_helpers'
 
 feature 'profile' do
-  scenario 'homepage displays user description' do
-    visit '/privateprofile/1'
+  scenario 'homepage displays user description after sign up' do
+    user_sign_up
     expect(page).to have_content "name:"
     expect(page).to have_content "description:"
     expect(page).to have_content "age:"
