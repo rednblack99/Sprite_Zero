@@ -36,10 +36,11 @@ enable :sessions
     User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')
     if signed_in?
       @user = User.get(params[:id])
-
+      @availability = @user.availability
       erb :profile
     else
       redirect '/'
+    
     end
   end
 
@@ -63,6 +64,12 @@ enable :sessions
     session.delete(:id)
     @user.destroy
     redirect '/'
+  end
+
+  post '/add_availability/:id' do
+    @user = User.get(params[:id])
+    @user.update(:availability => params[:date_available])
+    redirect "/privateprofile/#{session[:id]}"
   end
 
 

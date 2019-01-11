@@ -8,7 +8,6 @@ feature 'profile' do
     expect(page).to have_content "age:"
     expect(page).to have_content "interests:"
     expect(page).to have_content "photo:"
-    expect(page).to have_content "availability:"
     expect(page).to have_content "location:"
   end
 
@@ -79,16 +78,6 @@ feature 'profile' do
     click_button "Update"
     expect(page.current_path).to eq '/privateprofile/2'
     expect(page).to have_content "new photo"
-  end
-
-  scenario 'A user can edit their availability'  do
-    user_sign_in
-    click_on 'availability:'
-    expect(page).to have_content "What should we change it to?"
-    fill_in :updated_detail, with: 'always'
-    click_button "Update"
-    expect(page.current_path).to eq '/privateprofile/2'
-    expect(page).to have_content "always"
   end
 
   scenario 'A user can edit their location'  do

@@ -27,11 +27,17 @@
 </div>
 
 <div>
-  <p><a href=<%="/privateprofile/edit/#{@user.id}/availability"%>> availability:</a> <%=@user.availability%></p>
+  <p><a href=<%="/privateprofile/edit/#{@user.id}/location"%>> location:</a> <%=@user.location%></p>
 </div>
 
 <div>
-  <p><a href=<%="/privateprofile/edit/#{@user.id}/location"%>> location:</a> <%=@user.location%></p>
+  <p>When I'm around:</p>
+  <p><%= @availability %> </p>
+  <p> <form action=<%="/add_availability/#{@user.id}"%> method="post">
+  <input type="date" name="date_available">
+  <input type="submit" name="Add" value="Add date">
+
+</form> </p>
 </div>
 
 <div>

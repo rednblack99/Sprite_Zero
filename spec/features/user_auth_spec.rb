@@ -141,3 +141,16 @@ end
   end
 
 end
+
+RSpec.feature 'availability' do
+  scenario 'I can add a date I am available' do
+    visit '/'
+    fill_in :sign_up_username, with: 'new name'
+    fill_in :sign_up_age, with: 89
+    fill_in :sign_up_password, with: 'Password1'
+    click_button 'Sign Up'
+    fill_in 'date_available', with: "02/02/2018"
+    click_button 'Add'
+    expect(page).to have_content "02/02/2018"
+  end
+end
