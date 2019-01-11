@@ -16,6 +16,7 @@ class User
     property :password, BCryptHash
 
     validates_length_of :password, :min => 8 
+    validates_within :age, :set => 16..100
 
     def self.authenticate(username, password)
         user = first(username: username)

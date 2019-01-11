@@ -32,6 +32,16 @@ feature 'User Authentication' do
 
       expect(page.current_path).to eq '/'
     end
+
+    scenario 'signs up requires age to be between 16 and 100' do
+      visit '/'
+      fill_in :sign_up_username, with: 'chickenman'
+      fill_in :sign_up_age, with: 4
+      fill_in :sign_up_password, with: 'Sexcret123'
+      click_button 'Sign Up'
+      expect(page.current_path).to eq '/'
+    end
+
 end
 
   context 'Signin without an account' do
