@@ -23,7 +23,7 @@ enable :sessions
   end
 
   post '/signup' do
-    user = User.create(username: params[:sign_up_username],age: params[:sign_up_age], password: params[:sign_up_password],name: 'Click the link to add your full name', description: 'Tell us about yourself', interests: 'What do you enjoy?', photo: 'Upload a pic! (Coming soon!)', availability: 'When are you free?', location: 'Where are you?')
+    user = User.create(username: params[:sign_up_username],age: params[:sign_up_age], password: params[:sign_up_password],name: 'Click the link to add your full name', description: 'Tell us about yourself', interests: 'What do you enjoy?', photo: 'photo here', availability: 'When are you free?', location: 'Where are you?')
     redirect '/' unless params[:sign_up_password].length >= 8
     if user.valid?
       session[:id] = user.id
@@ -37,16 +37,21 @@ enable :sessions
     User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')
     if signed_in?
       @user = User.get(params[:id])
-
+      @availability = @user.availability
       erb :profile
     else
       redirect '/'
+
     end
   end
 
   get '/singleton-fithub'  do
-    @singletons = User.all
-    erb :Fithub
+    if signed_in?
+      @singletons = User.all
+      erb :Fithub
+    else
+      redirect '/'
+    end
   end
 
   get '/publicprofile/:id' do
@@ -60,8 +65,12 @@ enable :sessions
   end
 
   get '/delete_profile/:id' do
-    @user = User.get(params[:id])
-    erb :delete_confirmation
+    if signed_in?
+      @user = User.get(params[:id])
+      erb :delete_confirmation
+    else
+      redirect '/'
+    end
   end
 
   delete '/delete_profile/:id' do
@@ -69,6 +78,12 @@ enable :sessions
     session.delete(:id)
     @user.destroy
     redirect '/'
+  end
+
+  post '/add_availability/:id' do
+    @user = User.get(params[:id])
+    @user.update(:availability => params[:date_available])
+    redirect "/privateprofile/#{session[:id]}"
   end
 
 
