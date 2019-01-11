@@ -14,8 +14,8 @@ enable :sessions
   post '/signin' do
     user = User.authenticate(params[:sign_in_username], params[:sign_in_password])
     if user
-      session[:user_id] = user.id
-      redirect '/privateprofile/1'
+      session[:id] = user.id
+      redirect "/privateprofile/#{session[:id]}"
     else
       redirect '/'
     end
@@ -26,21 +26,26 @@ enable :sessions
     redirect '/' unless params[:sign_up_password].length >= 8
     if user.valid?
       session[:user_id] = user.id
-      redirect '/privateprofile/1'
+      redirect "/privateprofile/#{session[:id]}"
     else
       redirect '/'
     end
   end
 
-  get '/privateprofile/1'  do
+   get '/privateprofile/:id'  do
     User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')
     if signed_in?
-      @user = User.get(1)
+      @user = User.get(params[:id])
+
       erb :profile
     else
       redirect '/'
     end
+  end
 
+  get '/singleton-fithub'  do
+    @singletons = User.all
+    erb :Fithub
   end
 
   delete '/sessions' do
@@ -73,7 +78,7 @@ enable :sessions
   put "/privateprofile/edit/:id/name" do
     user = User.get(params[:id])
     user.update(:name => params[:updated_detail])
-    redirect '/privateprofile/1'
+    redirect "/privateprofile/#{session[:id]}"
   end
 
 
@@ -86,7 +91,7 @@ enable :sessions
   put "/privateprofile/edit/:id/description" do
     user = User.get(params[:id])
     user.update(:description => params[:updated_detail])
-    redirect '/privateprofile/1'
+    redirect "/privateprofile/#{session[:id]}"
   end
 
 
@@ -99,7 +104,7 @@ enable :sessions
   put "/privateprofile/edit/:id/interests" do
     user = User.get(params[:id])
     user.update(:interests => params[:updated_detail])
-    redirect '/privateprofile/1'
+    redirect "/privateprofile/#{session[:id]}"
   end
 
 
@@ -113,7 +118,7 @@ enable :sessions
   put "/privateprofile/edit/:id/age" do
     user = User.get(params[:id])
     user.update(:age => params[:updated_detail])
-    redirect '/privateprofile/1'
+    redirect "/privateprofile/#{session[:id]}"
   end
 
   get "/privateprofile/edit/:id/photo" do
@@ -125,7 +130,7 @@ enable :sessions
   put "/privateprofile/edit/:id/photo" do
     user = User.get(params[:id])
     user.update(:photo => params[:updated_detail])
-    redirect '/privateprofile/1'
+    redirect "/privateprofile/#{session[:id]}"
   end
 
   get "/privateprofile/edit/:id/availability" do
@@ -137,7 +142,7 @@ enable :sessions
   put "/privateprofile/edit/:id/availability" do
     user = User.get(params[:id])
     user.update(:availability => params[:updated_detail])
-    redirect '/privateprofile/1'
+    redirect "/privateprofile/#{session[:id]}"
   end
 
   get "/privateprofile/edit/:id/location" do
@@ -149,7 +154,7 @@ enable :sessions
   put "/privateprofile/edit/:id/location" do
     user = User.get(params[:id])
     user.update(:location => params[:updated_detail])
-    redirect '/privateprofile/1'
+    redirect "/privateprofile/#{session[:id]}"
   end
 
   run! if app_file == 0

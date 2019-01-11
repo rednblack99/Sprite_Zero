@@ -7,7 +7,11 @@ RSpec.feature 'infrastructure' do
     end
 
     scenario 'Can visit my profile'  do
-      visit '/privateprofile/1'
+      visit '/'
+      fill_in 'sign_up_username', with: "Mickeymouse"
+      fill_in 'sign_up_password', with: "Goofysecret"
+      fill_in 'sign_up_age', with: "69"
+      click_button "Sign Up"
       expect(page).to have_content "Welcome Back"
     end
   end
