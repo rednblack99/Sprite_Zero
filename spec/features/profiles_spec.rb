@@ -11,7 +11,6 @@ feature 'profile' do
     expect(page).to have_content "location:"
   end
 
-
  #  context 'displaying info' do
  #    let!(:user) {User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')}
  #    scenario 'A user can see their details on their profile page'  do
@@ -26,70 +25,69 @@ feature 'profile' do
  #    end
  # end
 
+  context 'Editing their info' do
+    let!(:user) { User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123') }
 
- context 'Editing their info' do
-  let!(:user) {User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')}
+    scenario 'A user can edit their name' do
+      user_sign_in
+      click_on 'name:'
+      expect(page).to have_content "What should we change it to?"
+      fill_in :updated_detail, with: 'James Blag'
+      click_button "Update"
+      expect(page.current_path).to eq '/privateprofile/2'
+      expect(page).to have_content "James Blag"
+    end
 
-  scenario 'A user can edit their name'  do
-    user_sign_in
-    click_on 'name:'
-    expect(page).to have_content "What should we change it to?"
-    fill_in :updated_detail, with: 'James Blag'
-    click_button "Update"
-    expect(page.current_path).to eq '/privateprofile/2'
-    expect(page).to have_content "James Blag"
+    scenario 'A user can edit their description' do
+      user_sign_in
+      click_on 'description:'
+      expect(page).to have_content "What should we change it to?"
+      fill_in :updated_detail, with: 'robot'
+      click_button "Update"
+      expect(page.current_path).to eq '/privateprofile/2'
+      expect(page).to have_content "robot"
+    end
+
+    scenario 'A user can edit their interests' do
+      user_sign_in
+      click_on 'interests:'
+      expect(page).to have_content "What should we change it to?"
+      fill_in :updated_detail, with: 'Javascript'
+      click_button "Update"
+      expect(page.current_path).to eq '/privateprofile/2'
+      expect(page).to have_content "Javascript"
+    end
+
+    scenario 'A user can edit their age' do
+      user_sign_in
+      click_on 'age:'
+      expect(page).to have_content "What should we change it to?"
+      fill_in :updated_detail, with: '99'
+      click_button "Update"
+      expect(page.current_path).to eq '/privateprofile/2'
+      expect(page).to have_content "99"
+    end
+
+    scenario 'A user can edit their photo' do
+      user_sign_in
+      click_on 'photo:'
+      expect(page).to have_content "What should we change it to?"
+      fill_in :updated_detail, with: 'new photo'
+      click_button "Update"
+      expect(page.current_path).to eq '/privateprofile/2'
+      expect(page).to have_content "new photo"
+    end
+
+    scenario 'A user can edit their location' do
+      user_sign_in
+      click_on 'location:'
+      expect(page).to have_content "What should we change it to?"
+      fill_in :updated_detail, with: 'moon'
+      click_button "Update"
+      expect(page.current_path).to eq '/privateprofile/2'
+      expect(page).to have_content "moon"
+    end
+
   end
-
-  scenario 'A user can edit their description'  do
-    user_sign_in
-    click_on 'description:'
-    expect(page).to have_content "What should we change it to?"
-    fill_in :updated_detail, with: 'robot'
-    click_button "Update"
-    expect(page.current_path).to eq '/privateprofile/2'
-    expect(page).to have_content "robot"
-  end
-
-  scenario 'A user can edit their interests'  do
-    user_sign_in
-    click_on 'interests:'
-    expect(page).to have_content "What should we change it to?"
-    fill_in :updated_detail, with: 'Javascript'
-    click_button "Update"
-    expect(page.current_path).to eq '/privateprofile/2'
-    expect(page).to have_content "Javascript"
-  end
-
-  scenario 'A user can edit their age'  do
-    user_sign_in
-    click_on 'age:'
-    expect(page).to have_content "What should we change it to?"
-    fill_in :updated_detail, with: '99'
-    click_button "Update"
-    expect(page.current_path).to eq '/privateprofile/2'
-    expect(page).to have_content "99"
-  end
-
-  scenario 'A user can edit their photo'  do
-    user_sign_in
-    click_on 'photo:'
-    expect(page).to have_content "What should we change it to?"
-    fill_in :updated_detail, with: 'new photo'
-    click_button "Update"
-    expect(page.current_path).to eq '/privateprofile/2'
-    expect(page).to have_content "new photo"
-  end
-
-  scenario 'A user can edit their location'  do
-    user_sign_in
-    click_on 'location:'
-    expect(page).to have_content "What should we change it to?"
-    fill_in :updated_detail, with: 'moon'
-    click_button "Update"
-    expect(page.current_path).to eq '/privateprofile/2'
-    expect(page).to have_content "moon"
-  end
-
-end
 
 end

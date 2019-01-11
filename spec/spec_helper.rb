@@ -4,8 +4,7 @@ require 'capybara/rspec'
 require 'database_cleaner'
 require './app'
 
-Capybara.app = Singleton_dating
-
+Capybara.app = SingletonDating
 
 RSpec.configure do |config|
 
