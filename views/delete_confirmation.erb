@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Singleton Dating</title>
+  </head>
+  <body>
+    <p>Are you sure you want to delete your account?</p>
+
+    <form action=<%="/delete_profile/#{@user.id}"%> method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" name="Yes" value="Yes">
+    </form>
+
+    <form action=<%="/privateprofile/#{@user.id}"%> method="get">
+      <input type="submit" name="No" value="No">
+    </form>
+  </body>
+</html>

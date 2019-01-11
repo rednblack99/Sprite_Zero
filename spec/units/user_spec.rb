@@ -15,6 +15,18 @@ describe User do
     end
   end
 
+  context 'User.authenticate' do
+    let!(:david) {User.create(username: 'mynameis', password: 'mynameissecret')}
+    it 'returns nil if password incorrect' do
+      expect(User.authenticate(david.username, 'Wrong Password')).to eq nil
+    end
+
+    it 'returns nil if user is not in database' do
+      expect(User.authenticate("Dave", david.password)).to eq nil
+    end
+
+  end
+
   context 'User details are correct' do
     # let!(:dave) {User.create(username: 'dave', password: 'Secret123')}
     let!(:user) {User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')}

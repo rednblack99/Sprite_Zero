@@ -1,4 +1,10 @@
 <h1>Welcome Back</h1>
+<div>
+  <form action="/sessions" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" name="Sign Out" value="Sign Out">
+  </form>
+</div>
 
 <div>
   <p> <a href=<%="/privateprofile/edit/#{@user.id}/name"%>> name:</a> <%=@user.name%></p>
@@ -27,3 +33,7 @@
 <div>
   <p><a href=<%="/privateprofile/edit/#{@user.id}/location"%>> location:</a> <%=@user.location%></p>
 </div>
+
+<footer>
+  <a href=<%= "/delete_profile/#{@user.id}" %>>Delete Account</a>
+</footer>
