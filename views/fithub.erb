@@ -1,7 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="<%= url('/css/fithub.css') %>">
+    <meta charset="utf-8">
+    <title>Singleton Dating</title>
+  </head>
+
+<body>
+<div class="container">
+
+      <div class="right">
+        <form action="/sessions" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" name="Sign Out" value="Sign Out">
+        </form>
+      </div>
+
+
+<header>
+<h1> Who else is on Fithub! </h1>
+</header>
 
 <% @singletons.each do |singleton| %>
 <div>
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMBmrIRyOvcTZOWoTGB_HHSgJEOQNezjwCMUDmvMkZX_M2xcZV" alt="User Headshot">
  <a href=<%="/publicprofile/#{singleton.id}"%>><%=singleton.name%></a>
  <%=singleton.interests%>
  </div>
 <% end %>
+</div>
+</body>
+</html>

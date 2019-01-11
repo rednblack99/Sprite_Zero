@@ -1,18 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="<%= url('/css/public_profile.css') %>">
+    <meta charset="utf-8">
+    <title>Singleton Dating - Fithub</title>
+  </head>
+
+<body>
+
+
+
+<div class="container">
+
+      <div class="right">
+        <form action="/sessions" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" name="Sign Out" value="Sign Out">
+        </form>
+      </div>
+
+<header>
+<h1> <%= "#{@user.name}'s profile"%>! </h1>
+</header>
+
+      <nav>
+        <ul>
+          <li><a href="/singleton-fithub">FitHub</a></li>
+        </ul>
+      </nav>
+
+      
+
+<div class="info">
+
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMBmrIRyOvcTZOWoTGB_HHSgJEOQNezjwCMUDmvMkZX_M2xcZV" alt="User Headshot">
+
+
 <div>
 name: <%=@user.name%>
+</div>
+<br>
 <div>
 description: <%=@user.description%>
+</div>
+<br>
 <div>
 interests: <%=@user.interests%>
+</div>
+<br>
 <div>
 age: <%=@user.age%>
+</div>
+<br>
 <div>
 photo: <%=@user.photo%>
+</div>
+<br>
 <div>
 availability: <%=@user.availability%>
+</div>
+<br>
 <div>
 location: <%=@user.location%>
+</div>
+<br>
+</div>
 
-<form action="/singleton-fithub" method="get">
-  <input type="submit" name="Fithub" value="Fithub">
-</form>
+</div>
+</body>
+</html>
