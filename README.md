@@ -78,25 +78,46 @@ I can delete my profile page and account
 As an admin
 So non-Singletons cannot view User's profiles
 They must have an account
-
 ```
 
-## Setup
+## Requirements and Setup
 --------
-From your terminal move to your project directory and input these commands:
-```
-xxxxx
+
+- Requirements:
+
+ 1. Ruby and RVM, please see https://rvm.io/rvm/install for installation instructions
+ 2. PostgreSQL, please see http://www.postgresqltutorial.com/install-postgresql/ for installation instructions
+
+- Setup:
+
+- Once your system has the above requirements installed, from your command line move to your project directory and run the following commands.
+
+ 1. To clone the repo:
 
 ```
+ git clone git@github.com:rednblack99/singletons_app.git
+ cd singletons_app
+ bundle
+```
+
+ 2. To set up the databases and database tables:
+
+ ```
+ psql
+ CREATE DATABASE singleton_development;
+ CREATE DATABASE singleton_test;
+ \q
+ rake db:auto_migrate RACK_ENV=test
+ rake db:auto_upgrade
+```
+
+ 3. Run locally:
+
+```
+ rackup
+```
+
+ 4. Visit Singleton on your browser!
 
 #### Approach-
 --------------
-- 
-
-
-
-
-Collapse 
-Message Input
-
-Message Adam Lodowski
