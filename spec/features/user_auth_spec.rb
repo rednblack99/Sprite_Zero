@@ -93,6 +93,7 @@ end
       fill_in :sign_up_password, with: 'Secret123'
       click_button 'Sign Up'
       click_button 'Sign Out'
+      visit '/privateprofile/1'
 
       expect(page.current_path).to eq '/'
       expect(page).to have_content('Username:')
