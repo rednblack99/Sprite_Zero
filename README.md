@@ -78,6 +78,14 @@ I can delete my profile page and account
 As an admin
 So non-Singletons cannot view User's profiles
 They must have an account
+
+As a user
+So I can search for my one true pair partner
+I can view all other Singletons on one page
+
+As a user
+So I can find out more about potential matches
+I can view other Singletons profiles
 ```
 
 ## Requirements and Setup
@@ -90,7 +98,7 @@ They must have an account
 
 - Setup:
 
-- Once your system has the above requirements installed, from your command line move to your project directory and run the following commands.
+Once your system has the above requirements installed, from your command line move to your project directory and run the following commands.
 
  1. To clone the repo:
 
