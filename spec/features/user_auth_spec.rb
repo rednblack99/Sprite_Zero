@@ -66,6 +66,17 @@ end
 
       expect(page).to have_content('Welcome Back')
     end
+    scenario 'User cannot signin with incorrect password' do
+      visit '/'
+      fill_in :sign_in_username, with: 'awesomedave'
+      fill_in :sign_in_password, with: 'Password?!?!'
+      click_button 'Sign In'
+
+      expect(page.current_path).to eq '/'
+      expect(page).to have_content('Username:')
+      expect(page).to have_content('Password:')
+    end
+
   end
 
 end
