@@ -40,6 +40,12 @@ enable :sessions
     end
   end
 
+  get '/singleton-fithub'  do
+    @singletons = User.all
+    erb :Fithub
+  end
+
+
 
 
 
@@ -135,7 +141,7 @@ enable :sessions
     user.update(:location => params[:updated_detail])
     redirect "/privateprofile/#{session[:id]}"
   end
-  
+
   run! if app_file == 0
 
 end
