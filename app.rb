@@ -25,7 +25,7 @@ enable :sessions
     user = User.create(username: params[:sign_up_username],age: params[:sign_up_age], password: params[:sign_up_password],name: 'Click the link to add your full name', description: 'Tell us about yourself', interests: 'What do you enjoy?', photo: 'Upload a pic! (Coming soon!)', availability: 'When are you free?', location: 'Where are you?')
     redirect '/' unless params[:sign_up_password].length >= 8
     if user.valid?
-      session[:user_id] = user.id
+      session[:id] = user.id
       redirect "/privateprofile/#{session[:id]}"
     else
       redirect '/'
@@ -49,7 +49,7 @@ enable :sessions
   end
 
   delete '/sessions' do
-    session.delete(:user_id)
+    session.delete(:id)
     redirect '/'
   end
 
@@ -60,7 +60,7 @@ enable :sessions
 
   delete '/delete_profile/:id' do
     @user = User.get(params[:id])
-    session.delete(:user_id)
+    session.delete(:id)
     @user.destroy
     redirect '/'
   end
@@ -166,7 +166,7 @@ enable :sessions
   end
 
   def current_user
-    @current_user ||= User.get(session[:user_id])
+    @current_user ||= User.get(session[:id])
   end
 
 end
