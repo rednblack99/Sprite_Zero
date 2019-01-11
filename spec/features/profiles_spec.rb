@@ -1,3 +1,5 @@
+require_relative 'web_helpers'
+
 feature 'profile' do
   scenario 'homepage displays user description' do
     visit '/privateprofile/1'
@@ -11,22 +13,22 @@ feature 'profile' do
   end
 
   context 'displaying info' do
-    let!(:user) {User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')}    
+    let!(:user) {User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')}
     scenario 'A user can see their details on their profile page'  do
       visit '/privateprofile/1'
       expect(page).to have_content 'Joe Bloggs'
       expect(page).to have_content "19"
-      expect(page).to have_content "person"      
+      expect(page).to have_content "person"
       expect(page).to have_content "Ruby"
       expect(page).to have_content "test url"
       expect(page).to have_content "never"
       expect(page).to have_content "London"
-    end  
+    end
  end
 
  context 'Editing their info' do
   let!(:user) {User.create(name: 'Joe Bloggs', description: 'person', age: '19', interests: 'Ruby', photo: 'test url', availability: 'never', location: 'London', username: 'JoeyB', password: 'secret123')}
-  
+
   scenario 'A user can edit their name'  do
     visit '/privateprofile/1'
     click_on 'name:'
@@ -37,7 +39,7 @@ feature 'profile' do
     expect(page.current_path).to eq '/privateprofile/1'
     expect(page).to have_content "James Blag"
   end
-  
+
   scenario 'A user can edit their description'  do
     visit '/privateprofile/1'
     click_on 'description:'
@@ -47,7 +49,7 @@ feature 'profile' do
     click_button "Update"
     expect(page.current_path).to eq '/privateprofile/1'
     expect(page).to have_content "robot"
-  end  
+  end
 
   scenario 'A user can edit their interests'  do
     visit '/privateprofile/1'
@@ -58,7 +60,7 @@ feature 'profile' do
     click_button "Update"
     expect(page.current_path).to eq '/privateprofile/1'
     expect(page).to have_content "Javascript"
-  end  
+  end
 
   scenario 'A user can edit their age'  do
     visit '/privateprofile/1'
@@ -69,7 +71,7 @@ feature 'profile' do
     click_button "Update"
     expect(page.current_path).to eq '/privateprofile/1'
     expect(page).to have_content "99"
-  end  
+  end
 
   scenario 'A user can edit their photo'  do
     visit '/privateprofile/1'
@@ -80,7 +82,7 @@ feature 'profile' do
     click_button "Update"
     expect(page.current_path).to eq '/privateprofile/1'
     expect(page).to have_content "new photo"
-  end  
+  end
 
   scenario 'A user can edit their availability'  do
     visit '/privateprofile/1'
@@ -91,18 +93,17 @@ feature 'profile' do
     click_button "Update"
     expect(page.current_path).to eq '/privateprofile/1'
     expect(page).to have_content "always"
-  end  
+  end
 
   scenario 'A user can edit their location'  do
-    visit '/privateprofile/1'
+    user_sign_in
     click_on 'location:'
-    expect(page.current_path).to eq '/privateprofile/edit/1/location'
     expect(page).to have_content "What should we change it to?"
     fill_in :updated_detail, with: 'moon'
     click_button "Update"
-    expect(page.current_path).to eq '/privateprofile/1'
+    expect(page.current_path).to eq '/privateprofile/2'
     expect(page).to have_content "moon"
-  end  
+  end
 
 end
 
