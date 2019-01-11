@@ -1,5 +1,6 @@
 <p> What should we change it to? </p>
-
+<%=p @user%>
+<%=p @user.id%>
 <form action=<%="/privateprofile/edit/#{@user.id}/#{@detail}"%> method="post">
   <input name='_method' type='hidden' value='put'/>
   <input type="text" name="updated_detail">
