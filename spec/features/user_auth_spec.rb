@@ -23,17 +23,15 @@ feature 'User Authentication' do
       expect(page).to have_content('Password:')
     end
 
-    # scenario 'signs up requires minimum 8 characters password' do
-    #   visit '/'
-    #   fill_in :sign_up_username, with: 'bananaman'
-    #   fill_in :sign_up_age, with: 18
-    #   fill_in :sign_up_password, with: 'Pass123'
-    #   click_button 'Sign Up'
-    #
-    #   expect(page.current_path).to eq '/'
-    #   expect(page).to have_content('Username:')
-    #   expect(page).to have_content('Password:')
-    # end
+    scenario 'signs up requires minimum 8 characters password' do
+      visit '/'
+      fill_in :sign_up_username, with: 'bananaman'
+      fill_in :sign_up_age, with: 18
+      fill_in :sign_up_password, with: 'Pass123'
+      click_button 'Sign Up'
+
+      expect(page.current_path).to eq '/'
+    end
 end
 
   context 'Signin without an account' do

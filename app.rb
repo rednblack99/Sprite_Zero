@@ -23,6 +23,7 @@ enable :sessions
 
   post '/signup' do
     user = User.create(username: params[:sign_up_username],age: params[:sign_up_age], password: params[:sign_up_password])
+    redirect '/' unless params[:sign_up_password].length >= 8
     if user.valid?
       session[:user_id] = user.id
       redirect '/privateprofile/1'
@@ -36,14 +37,6 @@ enable :sessions
     @user = User.get(1)
     erb :profile
   end
-
-
-
-
-
-
-
-
 
   get "/privateprofile/edit/:id/name" do
     @user = User.get(params[:id])
@@ -132,7 +125,7 @@ enable :sessions
     user.update(:location => params[:updated_detail])
     redirect '/privateprofile/1'
   end
-  
+
   run! if app_file == 0
 
 end

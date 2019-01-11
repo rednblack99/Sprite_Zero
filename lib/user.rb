@@ -15,6 +15,8 @@ class User
     property :username, String, :unique => true
     property :password, BCryptHash
 
+    validates_length_of :password, :min => 8 
+
     def self.authenticate(username, password)
         user = first(username: username)
         return nil unless user
