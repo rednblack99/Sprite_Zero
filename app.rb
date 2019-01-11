@@ -22,7 +22,7 @@ enable :sessions
   end
 
   post '/signup' do
-    user = User.create(username: params[:sign_up_username],age: params[:sign_up_age], password: params[:sign_up_password],name: 'Click the link to add your full name', description: 'Tell us about yourself', interests: 'What do you enjoy?', photo: 'Upload a pic! (Coming soon!)', availability: 'When are you free?', location: 'Where are you?')
+    user = User.create(username: params[:sign_up_username],age: params[:sign_up_age], password: params[:sign_up_password],name: 'Click the link to add your full name', description: 'Tell us about yourself', interests: 'What do you enjoy?', photo: 'photo here', availability: 'When are you free?', location: 'Where are you?')
     redirect '/' unless params[:sign_up_password].length >= 8
     if user.valid?
       session[:id] = user.id
@@ -40,7 +40,7 @@ enable :sessions
       erb :profile
     else
       redirect '/'
-    
+
     end
   end
 
@@ -59,7 +59,7 @@ enable :sessions
   end
 
   get '/delete_profile/:id' do
-    if signed in?
+    if signed_in?
       @user = User.get(params[:id])
       erb :delete_confirmation
     else

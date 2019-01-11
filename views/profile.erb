@@ -1,58 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="<%= url('/css/profile.css') %>">
+    <meta charset="utf-8">
+    <title>Singleton Dating</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="right">
+        <form action="/sessions" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" name="Sign Out" value="Sign Out">
+        </form>
+      </div>
+
+      <header>
+        <h1>Welcome Back</h1>
+      </header>
+
+      <nav>
+        <ul>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">FitHub</a></li>
+        </ul>
+      </nav>
+      <div class="">
+        <img src="<%= @user.photo %>" alt="profile_pic">
+      </div>
+
+      <div>
+        <p><a href=<%="/privateprofile/edit/#{@user.id}/photo"%>> photo:</a> <%=@user.photo%></p>
+      </div>
+
+      <div>
+        <p> <a href=<%="/privateprofile/edit/#{@user.id}/name"%>> name:</a> <%=@user.name%></p>
+      </div>
+
+      <div>
+        <p><a href=<%="/privateprofile/edit/#{@user.id}/description"%>> description:</a> <%=@user.description%></p>
+      </div>
+
+      <div>
+        <p><a href=<%="/privateprofile/edit/#{@user.id}/interests"%>> interests:</a> <%=@user.interests%></p>
+      </div>
+
+      <div>
+        <p><a href=<%="/privateprofile/edit/#{@user.id}/age"%>> age:</a> <%=@user.age%></p>
+      </div>
+
+      <div>
+        <p><a href=<%="/privateprofile/edit/#{@user.id}/location"%>> location:</a> <%=@user.location%></p>
+      </div>
+
+      <div>
+        <p>When I'm around:</p>
+        <p><%= @availability %> </p>
+        <p> <form action=<%="/add_availability/#{@user.id}"%> method="post">
+        <input type="date" name="date_available">
+        <input type="submit" name="Add" value="Add date">
+
+      </form>
+      </div>
+
+      <div>
+      <form action="/singleton-fithub" method="get">
+        <input type="submit" name="Fithub" value="Fithub">
+      </form>
+      </div>
 
 
+      <footer>
+        <a href=<%= "/delete_profile/#{@user.id}" %>>Delete Account</a>
+      </footer>
+    </div>
 
-
-
-<h1>Welcome Back</h1>
-
-<div>
-  <form action="/sessions" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" name="Sign Out" value="Sign Out">
-  </form>
-</div>
-
-<div>
-  <p> <a href=<%="/privateprofile/edit/#{@user.id}/name"%>> name:</a> <%=@user.name%></p>
-</div>
-
-<div>
-  <p><a href=<%="/privateprofile/edit/#{@user.id}/description"%>> description:</a> <%=@user.description%></p>
-</div>
-
-<div>
-  <p><a href=<%="/privateprofile/edit/#{@user.id}/interests"%>> interests:</a> <%=@user.interests%></p>
-</div>
-
-<div>
-  <p><a href=<%="/privateprofile/edit/#{@user.id}/age"%>> age:</a> <%=@user.age%></p>
-</div>
-
-<div>
-  <p><a href=<%="/privateprofile/edit/#{@user.id}/photo"%>> photo:</a> <%=@user.photo%></p>
-</div>
-
-<div>
-  <p><a href=<%="/privateprofile/edit/#{@user.id}/location"%>> location:</a> <%=@user.location%></p>
-</div>
-
-<div>
-  <p>When I'm around:</p>
-  <p><%= @availability %> </p>
-  <p> <form action=<%="/add_availability/#{@user.id}"%> method="post">
-  <input type="date" name="date_available">
-  <input type="submit" name="Add" value="Add date">
-
-</form> </p>
-</div>
-
-<div>
-<form action="/singleton-fithub" method="get">
-  <input type="submit" name="Fithub" value="Fithub">
-</form>
-</div>
-
-
-<footer>
-  <a href=<%= "/delete_profile/#{@user.id}" %>>Delete Account</a>
-</footer>
+  </body>
+</html>
