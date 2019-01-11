@@ -11,6 +11,7 @@ enable :sessions
     erb :index
   end
 
+
   post '/signin' do
     user = User.authenticate(params[:sign_in_username], params[:sign_in_password])
     if user
@@ -51,6 +52,11 @@ enable :sessions
     else
       redirect '/'
     end
+  end
+
+  get '/publicprofile/:id' do
+     @user = User.get(params[:id])
+     erb :public_profile
   end
 
   delete '/sessions' do
