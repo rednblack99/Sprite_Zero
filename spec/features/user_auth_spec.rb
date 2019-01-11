@@ -85,5 +85,19 @@ end
     end
 
   end
+  context 'Sign out' do
+    scenario 'can sign out of account' do
+      visit '/'
+      fill_in :sign_up_username, with: 'fabdave'
+      fill_in :sign_up_age, with: 20
+      fill_in :sign_up_password, with: 'Secret123'
+      click_button 'Sign Up'
+      click_button 'Sign Out'
+
+      expect(page.current_path).to eq '/'
+      expect(page).to have_content('Username:')
+      expect(page).to have_content('Password:')
+    end
+  end
 
 end

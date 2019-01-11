@@ -40,10 +40,13 @@ enable :sessions
     else
       redirect '/'
     end
-    
+
   end
 
-
+  delete '/sessions' do
+    session.delete(:user_id)
+    redirect '/'
+  end
 
 
 
