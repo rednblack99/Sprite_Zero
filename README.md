@@ -1,15 +1,28 @@
 ## Singletons Dating App
 ------------------------
 
-A dating app for Makers to meet their one true pair partner.
+The Singletons dating app is a web-app created in Ruby that allows users to create an account and dating profile which they can then use to find their one true pair partner. 
 
-## MVP
+## TechStack
 -------
 
-A user can sign in and create a dating profile
+* Ruby
+* DataMapper
+* Sinatra
+* Rake
+
+for testing and code quality:
+* RSPec
+* Capybara
+* SimpleCov
+* Rubocop
+
 
 ## User Stories
 ---------------
+
+Singletons was created with the following user stories in mind which were used to guide the development process. It currently meets all user requirements listed below. 
+
 ```
 As a user
 So I can begin my search for my one true pair partner
@@ -41,7 +54,7 @@ I cannot create an account if I am under 16 years old
 
 As an admin
 So I have the information I need to create a new user
-A User cannot ommit any details when signing up to Singletons.
+A User cannot omit any details when signing up to Singletons.
 
 As a user
 So my profile displays my name
@@ -127,5 +140,21 @@ Once your system has the above requirements installed, from your command line mo
 
  4. Visit Singleton on your browser!
 
-#### Approach-
---------------
+## Approach
+-------------
+
+Singletons was developed as part of a three day team project at Makers Academy. We used an agile development process, having team meetings each morning and retros each afternoon to stay on track and ensure solid communication.
+
+Our first day was devoted to planning, design and modelling. We created a complete site overview and wireframe as well as how each page would interact with the database. On the second and third days we used pair programming in short half day sprints to implement functionality. The final afternoon was dedicated to refactoring, CSS and code-cleanup. 
+
+## Models
+-------------
+
+![Singleton Model 1](https://i.imgur.com/PmKVYoF.png "Singleton Model 1")
+
+![Singleton Model 2](https://i.imgur.com/9QIGnqO.png "Singleton Model 2")
+
+## How to Contribute
+-------------
+
+To contribute, fork and clone this repo. Make your suggested amends and submit a pull request for review.
